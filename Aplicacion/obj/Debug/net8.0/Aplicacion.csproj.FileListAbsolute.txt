@@ -1,0 +1,11 @@
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\bin\Debug\net8.0\Aplicacion.deps.json
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\bin\Debug\net8.0\Aplicacion.dll
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\bin\Debug\net8.0\Aplicacion.pdb
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\Aplicacion.AssemblyInfoInputs.cache
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\Aplicacion.AssemblyInfo.cs
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\Aplicacion.csproj.CoreCompileInputs.cache
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\Aplicacion.dll
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\refint\Aplicacion.dll
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\Aplicacion.pdb
+c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\ref\Aplicacion.dll
