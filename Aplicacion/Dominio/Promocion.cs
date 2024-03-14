@@ -1,10 +1,30 @@
-namespace Aplicacion.Dominio;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Promocion(byte _ID,string _nombre, string _descripcion , int _descuento, DateTime _Fechainicio, DateTime _FechaFin) : EntidadConNombre(_ID,_nombre)
+namespace Aplicacion.Dominio;
+[Table("Promocion")]
+public class Promocion: EntidadConNombre
 {
-    public string Descripcion = _descripcion;
-    public int Descuento = _descuento;
-    public DateTime FechaInicio = _Fechainicio;
-    public DateTime FechaFin = _FechaFin;
+    [Required]
+    [StringLength(50)]
+    public string Descripcion {get; set;}
+    [Required]
+    public int Descuento {get; set;}
+
+    [Required]
+    public DateTime FechaInicio {get; set;}
+
+    [Required]
+    public DateTime FechaFin {get; set;}
+
+
+    public Promocion(byte ID, string Nombre, string Descripcion , int Descuento, DateTime FechaInicio, DateTime FechaFin) : base(ID, Nombre)
+    {
+        this.Descripcion =Descripcion;
+        this.Descuento =Descuento;
+        this.FechaInicio = FechaInicio;
+        this.FechaFin= FechaFin;
+
+    }
 
 }

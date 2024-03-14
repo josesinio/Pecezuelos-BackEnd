@@ -1,10 +1,13 @@
-namespace Aplicacion.Dominio;
+using System.ComponentModel.DataAnnotations.Schema;
 
+namespace Aplicacion.Dominio;
+[Table("Vendedor")]
 public class Vendedor : Usuario
 {
-    public List<Producto> Productos = new List<Producto>();
-    public Vendedor(byte _ID , string _nombre, string _email, string _contraseña) : base(_ID,_nombre, _email, _contraseña)
+    public List<Producto> Productos {get; set;}
+    public Vendedor(byte ID , string Nombre, string Email, string Contraseña) : base(ID, Nombre, Email, Contraseña)
     {
+        Productos = new List<Producto>();
     }
 
 }

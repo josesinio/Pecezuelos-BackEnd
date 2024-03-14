@@ -1,10 +1,32 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Aplicacion.Dominio;
 
-public class Carrito(byte _IdCarrito, byte _Idcliente, int _precioTotal)
+[Table("Carrito")]
+public class Carrito
 {
-    public byte IDCarrito = _IdCarrito;
-    public byte IDCliente = _Idcliente;
-    public int PrecioTotal = _precioTotal;
-    public List<Producto> Productos = new List<Producto>();
+    [Key]
+    [Required]
+    public byte IDCarrito { get; set; }
+
+    [ForeignKey("IdCliente")]
+    [Required]
+    public byte IDCliente { get; set; }
+
+    [Required]
+    public int PrecioTotal { get; set; }
+
+    public List<Producto> Productos { get; set; }
+
+    public virtual Cliente? Cliente { get; set; }
+
+    public Carrito(byte IDCarrito,byte IDCliente, int PrecioTotal)
+    {
+        this.IDCarrito =IDCarrito;
+        this.IDCliente= IDCliente;
+        this.PrecioTotal = PrecioTotal;
+        Productos = new List<Producto>();
+    }
 
 }

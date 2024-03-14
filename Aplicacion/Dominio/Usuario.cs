@@ -1,13 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Aplicacion.Dominio;
 
 public abstract class Usuario: EntidadConNombre
 {
+    [Required]
+    [StringLength(50)]
     public string Email {get; set;}
+    [Required]
+    [StringLength(50)]
     public string Contraseña {get; set;}
-    protected Usuario(byte _ID, string _nombre,string _email, string _contraseña ) : base(_ID,_nombre)
+    protected Usuario(byte ID, string Nombre,string Email, string Contraseña ) : base(ID, Nombre)
     {
-        Email= _email;
-        Contraseña= _contraseña;
+        this.Email= Email;
+        this.Contraseña= Contraseña;
     }
 
 }

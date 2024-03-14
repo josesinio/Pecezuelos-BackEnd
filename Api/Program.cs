@@ -1,10 +1,7 @@
-using Api.Funcionalidades.Clientes;
-using Api.Funcionalidades.Comentarios;
-using Api.Funcionalidades.Productos;
-using Api.Funcionalidades.Promociones;
-using Api.Funcionalidades.Vendedores;
 using Api.Funcionalidades;
 using Carter;
+using Api.Persistencia;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +13,22 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddServiceManager();
 builder.Services.AddCarter();
 
+
+
+var  connectionString = builder.Configuration.GetConnectionString("aplicacion_db");
+
+builder.Services.AddDbContext<PecezuelosDbContext>(Option =>
+    Option.UseMySql(connectionString, new MySqlServerVersion( new Version(8,0,34))));
+
+builder.Services.AddDbContext<PecezuelosDbContext>();
+
+var opciones = new DbContextOptionsBuilder<PecezuelosDbContext>();
+
+opciones.UseMySql(connectionString, new MySqlServerVersion(new Version(8,0,30)));
+
+var contexto= new PecezuelosDbContext(opciones.Options);
+
+contexto.Database.EnsureCreated();
 
 var app = builder.Build();
 

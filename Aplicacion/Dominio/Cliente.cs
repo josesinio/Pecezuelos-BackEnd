@@ -1,11 +1,13 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Aplicacion.Dominio;
+[Table("Cliente")]
 
 public class Cliente : Usuario
 {
-    public byte IdCarrito{get; set;}
-    public Cliente( byte _ID,string _nombre, string _email, string _contraseña, byte carrito) : base(_ID,_nombre, _email, _contraseña)
+    public virtual Carrito? Carrito{get; set;}
+    public Cliente( byte ID,string Nombre, string Email, string Contraseña) : base(ID, Nombre, Email, Contraseña)
     {
-        IdCarrito = carrito;
     }
 
 }

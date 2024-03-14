@@ -14,7 +14,7 @@ public class ClienteService : IClienteService
     {
         clientes= new List<Cliente>(){
             
-            new Cliente(1, "Josesito", "Josesito@gmail.com","Josesito123",1)
+            new Cliente(1, "Josesito", "Josesito@gmail.com","Josesito123")
         };
     }
     public List<Cliente> GetClientes()

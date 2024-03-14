@@ -12,7 +12,7 @@ public class ProductoService : IProductoService
     public ProductoService()
     {
         productos= new List<Producto>(){
-            new Producto(1,"Pecera", 1, 122, "Pecera de dos metros.img",Categoria.Pecera,12, null, "Pecera que mide 2x2 metros con capacidad de 2 peces  grandes")
+            new Producto(1,"Pecera", 1, 122, "Pecera de dos metros.img",Categoria.Pecera,12, "Pecera que mide 2x2 metros con capacidad de 2 peces  grandes")
         };
     }
     public List<Producto> GetProductos()

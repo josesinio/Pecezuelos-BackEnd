@@ -12,7 +12,7 @@ public class ComentarioService: IComentarioService
     public ComentarioService()
     {
         comentarios= new List<Comentario>(){
-            new Comentario(1,"Jose crack", Valoracion.MuyBueno)
+            new Comentario(1,1,"Jose crack", Valoracion.MuyBueno)
         };
     }
 
