@@ -15,20 +15,16 @@ namespace Api.Persistencia.Migraciones
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Cliente",
+                name: "Carrito",
                 columns: table => new
                 {
-                    ID = table.Column<byte>(type: "tinyint unsigned", nullable: false),
-                    Nombre = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Contraseña = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    IDCarrito = table.Column<byte>(type: "tinyint unsigned", nullable: false),
+                    IDCliente = table.Column<byte>(type: "tinyint unsigned", nullable: false),
+                    PrecioTotal = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cliente", x => x.ID);
+                    table.PrimaryKey("PK_Carrito", x => x.IDCarrito);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -51,22 +47,26 @@ namespace Api.Persistencia.Migraciones
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Carrito",
+                name: "Cliente",
                 columns: table => new
                 {
-                    IDCarrito = table.Column<byte>(type: "tinyint unsigned", nullable: false),
-                    IDCliente = table.Column<byte>(type: "tinyint unsigned", nullable: false),
-                    PrecioTotal = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<byte>(type: "tinyint unsigned", nullable: false),
+                    CarritoIDCarrito = table.Column<byte>(type: "tinyint unsigned", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Contraseña = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Carrito", x => x.IDCarrito);
+                    table.PrimaryKey("PK_Cliente", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Carrito_Cliente_IDCliente",
-                        column: x => x.IDCliente,
-                        principalTable: "Cliente",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Cliente_Carrito_CarritoIDCarrito",
+                        column: x => x.CarritoIDCarrito,
+                        principalTable: "Carrito",
+                        principalColumn: "IDCarrito");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -152,10 +152,9 @@ namespace Api.Persistencia.Migraciones
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carrito_IDCliente",
-                table: "Carrito",
-                column: "IDCliente",
-                unique: true);
+                name: "IX_Cliente_CarritoIDCarrito",
+                table: "Cliente",
+                column: "CarritoIDCarrito");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comentario_ProductoID",
@@ -182,6 +181,9 @@ namespace Api.Persistencia.Migraciones
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Cliente");
+
+            migrationBuilder.DropTable(
                 name: "Comentario");
 
             migrationBuilder.DropTable(
@@ -195,9 +197,6 @@ namespace Api.Persistencia.Migraciones
 
             migrationBuilder.DropTable(
                 name: "Vendedor");
-
-            migrationBuilder.DropTable(
-                name: "Cliente");
         }
     }
 }

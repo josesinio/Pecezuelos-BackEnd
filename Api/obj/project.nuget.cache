@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l6R/BOPaf2uk0w4ZOcEC5mssGTT9vOMTKK6Ps+tL5Ro/Te+xx9AnBnXKb5L6YA7oqs8vC0KXBYOoPw7j7+AVqw==",
+  "dgSpecHash": "TzVY7WQz3zVL4qNBYJW5soDtAwE1CIQAJLZ1C7iS79vKidUD3Ixy2/nCO1BxCO+v9WbxfGGT0C4Apny+V1X8xQ==",
   "success": true,
-  "projectFilePath": "c:\\Users\\User\\Desktop\\workspace\\PecezuelosBackend\\Api\\Api.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\workspace\\PecezuelosBackend\\Api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\carter\\8.0.0\\carter.8.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512",

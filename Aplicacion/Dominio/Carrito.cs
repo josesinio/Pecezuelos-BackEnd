@@ -19,7 +19,6 @@ public class Carrito
 
     public List<Producto> Productos { get; set; }
 
-    public virtual Cliente? Cliente { get; set; }
 
     public Carrito(byte IDCarrito,byte IDCliente, int PrecioTotal)
     {

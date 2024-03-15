@@ -35,15 +35,15 @@ namespace Api.Persistencia.Migraciones
 
                     b.HasKey("IDCarrito");
 
-                    b.HasIndex("IDCliente")
-                        .IsUnique();
-
                     b.ToTable("Carrito");
                 });
 
             modelBuilder.Entity("Aplicacion.Dominio.Cliente", b =>
                 {
                     b.Property<byte>("ID")
+                        .HasColumnType("tinyint unsigned");
+
+                    b.Property<byte?>("CarritoIDCarrito")
                         .HasColumnType("tinyint unsigned");
 
                     b.Property<string>("Contraseña")
@@ -62,6 +62,8 @@ namespace Api.Persistencia.Migraciones
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("CarritoIDCarrito");
 
                     b.ToTable("Cliente");
                 });
@@ -196,15 +198,13 @@ namespace Api.Persistencia.Migraciones
                     b.ToTable("Vendedor");
                 });
 
-            modelBuilder.Entity("Aplicacion.Dominio.Carrito", b =>
+            modelBuilder.Entity("Aplicacion.Dominio.Cliente", b =>
                 {
-                    b.HasOne("Aplicacion.Dominio.Cliente", "Cliente")
-                        .WithOne("Carrito")
-                        .HasForeignKey("Aplicacion.Dominio.Carrito", "IDCliente")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Aplicacion.Dominio.Carrito", "Carrito")
+                        .WithMany()
+                        .HasForeignKey("CarritoIDCarrito");
 
-                    b.Navigation("Cliente");
+                    b.Navigation("Carrito");
                 });
 
             modelBuilder.Entity("Aplicacion.Dominio.Comentario", b =>
@@ -235,11 +235,6 @@ namespace Api.Persistencia.Migraciones
             modelBuilder.Entity("Aplicacion.Dominio.Carrito", b =>
                 {
                     b.Navigation("Productos");
-                });
-
-            modelBuilder.Entity("Aplicacion.Dominio.Cliente", b =>
-                {
-                    b.Navigation("Carrito");
                 });
 
             modelBuilder.Entity("Aplicacion.Dominio.Producto", b =>

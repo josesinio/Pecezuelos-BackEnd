@@ -12,12 +12,12 @@ public class PecezuelosDbContext(DbContextOptions<PecezuelosDbContext> options) 
     public DbSet<Promocion> Promociones {get; set;}
     public DbSet<Comentario> Comentarios {get; set;}
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Cliente>()
-            .HasOne(c => c.Carrito)
-            .WithOne(i => i.Cliente)
-            .HasForeignKey<Carrito>(b => b.IDCliente);
-    }
+    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //{
+    //    modelBuilder.Entity<Cliente>()
+    //        .HasOne(c => c.Carrito)
+    //       .WithOne(i => i.Cliente)
+    //        .HasForeignKey<Carrito>(b => b.IDCliente);
+    //}
 }
 
