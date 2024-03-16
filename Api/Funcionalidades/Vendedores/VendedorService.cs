@@ -1,3 +1,4 @@
+using Api.Persistencia;
 using Aplicacion.Dominio;
 
 namespace Api.Funcionalidades.Vendedores;
@@ -7,17 +8,15 @@ public interface IVendedorService{
 }
 public class VendedorService: IVendedorService
 {
-    List<Vendedor> vendedores;
-    public VendedorService()
+    public readonly PecezuelosDbContext context;
+    public VendedorService(PecezuelosDbContext context)
     {
-        vendedores= new List<Vendedor>{
-            new Vendedor(1,"Jose", "Jose","Josesito")
-        };
+        this.context= context;
     }
 
     public List<Vendedor> GetVendedores()
     {
-        return vendedores;
+        return context.Vendedores.ToList();
     }
 
 }

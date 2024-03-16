@@ -1,3 +1,4 @@
+using Api.Persistencia;
 using Aplicacion.Dominio;
 
 namespace Api.Funcionalidades.Comentarios;
@@ -8,17 +9,15 @@ public interface IComentarioService{
 }
 public class ComentarioService: IComentarioService
 {
-    List<Comentario> comentarios;
-    public ComentarioService()
+    public readonly PecezuelosDbContext context;
+    public ComentarioService(PecezuelosDbContext context)
     {
-        comentarios= new List<Comentario>(){
-            new Comentario(1,1,"Jose crack", Valoracion.MuyBueno)
-        };
+        this.context = context;
     }
 
     public List<Comentario> GetComentarios()
     {
-        return comentarios;
+        return context.Comentarios.ToList();
     }
 
 }

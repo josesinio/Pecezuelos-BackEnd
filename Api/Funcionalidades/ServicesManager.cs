@@ -10,12 +10,12 @@ namespace Api.Funcionalidades;
 public static class  ServicesManager
 {
     public static IServiceCollection AddServiceManager (this IServiceCollection services){
-        services.AddSingleton<ICarritoService, CarritoService>();
-        services.AddSingleton<IClienteService, ClienteService>();
-        services.AddSingleton<IComentarioService, ComentarioService>();
-        services.AddSingleton<IProductoService, ProductoService>();
-        services.AddSingleton<IPromocionService, PromocionService>();
-        services.AddSingleton<IVendedorService, VendedorService>();
+        services.AddScoped<ICarritoService, CarritoService>();
+        services.AddScoped<IClienteService, ClienteService>();
+        services.AddScoped<IComentarioService, ComentarioService>();
+        services.AddScoped<IProductoService, ProductoService>();
+        services.AddScoped<IPromocionService, PromocionService>();
+        services.AddScoped<IVendedorService, VendedorService>();
 
         return services;
     }

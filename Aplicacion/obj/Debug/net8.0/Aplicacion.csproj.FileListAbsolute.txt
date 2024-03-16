@@ -10,3 +10,4 @@ c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\re
 c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\Aplicacion.pdb
 c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\ref\Aplicacion.dll
 c:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\Aplicacion.sourcelink.json
+C:\Users\User\Desktop\workspace\PecezuelosBackend\Aplicacion\obj\Debug\net8.0\Aplicacion.csproj.AssemblyReference.cache

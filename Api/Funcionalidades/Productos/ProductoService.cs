@@ -1,3 +1,4 @@
+using Api.Persistencia;
 using Aplicacion.Dominio;
 
 namespace Api.Funcionalidades.Productos;
@@ -7,17 +8,15 @@ public interface IProductoService{
 }
 public class ProductoService : IProductoService
 {
-    List<Producto> productos;
+    public readonly PecezuelosDbContext context;
 
-    public ProductoService()
+    public ProductoService(PecezuelosDbContext context)
     {
-        productos= new List<Producto>(){
-            new Producto(1,"Pecera", 1, 122, "Pecera de dos metros.img",Categoria.Pecera,12, "Pecera que mide 2x2 metros con capacidad de 2 peces  grandes")
-        };
+        this.context = context;
     }
     public List<Producto> GetProductos()
     {
-        return productos;
+        return context.Productos.ToList();
     }
 
 }

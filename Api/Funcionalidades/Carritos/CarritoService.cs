@@ -1,4 +1,5 @@
 using System.Net.Http.Headers;
+using Api.Persistencia;
 using Aplicacion.Dominio;
 using Microsoft.VisualBasic;
 
@@ -10,16 +11,14 @@ public interface ICarritoService{
 }
 public class CarritoService : ICarritoService
 {
-    List<Carrito> carritos;
+    public readonly PecezuelosDbContext context;
 
-    public CarritoService()
+    public CarritoService(PecezuelosDbContext context)
     {
-        carritos= new List<Carrito>(){
-            new Carrito(1,1, 202020)
-        };
+        this.context = context;
     }
     public List<Carrito> GetCarritos()
     {
-        return carritos;
+        return context.Carritos.ToList();
     }
 }
