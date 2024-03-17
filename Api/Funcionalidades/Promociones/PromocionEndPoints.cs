@@ -16,5 +16,13 @@ public class PromocionEndPoints: ICarterModule
             promocionService.CreatePromocion(promocionDto);
             return Results.Ok("Promoción creada con éxito");
         });
+        app.MapPut("/Api/Promocion/{IDpromocion}", ([FromServices] IPromocionService promocionService, PromocionDto promocionDto, byte IDPromocion)=>{
+            promocionService.UpdatePromocion(IDPromocion, promocionDto);
+            return Results.Ok("Promoción Modificada con éxito");
+        });
+        app.MapDelete("/Api/Promocion/{IDPromocion}", ([FromServices] IPromocionService promocionService, byte IDPromocion)=>{
+            promocionService.DeletePromocion(IDPromocion);
+            return Results.Ok("Promoción Eliminada con éxito");
+        });
     }
 }

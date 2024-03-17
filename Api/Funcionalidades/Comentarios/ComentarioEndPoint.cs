@@ -14,6 +14,14 @@ public  class ComentarioEndPoint: ICarterModule
             comentarioService.CreateComentario(comentarioDto);
             return Results.Ok("Comentario creado con exito");
         });
+        app.MapPut("/Api/Comentario/{IDcomentario}", ([FromServices] IComentarioService comentarioService, ComentarioDto comentarioDto, byte IDcomentario)=>{
+            comentarioService.UpdateComentario(IDcomentario, comentarioDto);
+            return Results.Ok("Comentario Modificado con éxito");
+        });
+        app.MapDelete("/Api/Comentario/{IDcomentario}", ([FromServices] IComentarioService comentarioService, byte IDcomentario)=>{
+            comentarioService.DeleteComentario(IDcomentario);
+            return Results.Ok("Comentario Eliminado con éxito");
+        });
     }
 
 }

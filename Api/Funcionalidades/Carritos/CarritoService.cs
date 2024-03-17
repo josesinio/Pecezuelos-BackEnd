@@ -7,6 +7,8 @@ namespace Api.Funcionalidades.Carritos;
 public interface ICarritoService{
     List<Carrito> GetCarritos();
     void CreateCarrito(CarritoDto carritoDto);
+    void DeleteCarrito(byte IDcarrito);
+
 }
 public class CarritoService : ICarritoService
 {
@@ -23,9 +25,22 @@ public class CarritoService : ICarritoService
         context.SaveChanges();
     }
 
+    public void DeleteCarrito(byte IDcarrito)
+    {
+        var carrito = context.Carritos.FirstOrDefault(x => x.IDCarrito == IDcarrito);
+
+        if (carrito != null)
+        {
+            context.Remove(carrito);
+
+            context.SaveChanges();
+        }
+    }
 
     public List<Carrito> GetCarritos()
     {
         return context.Carritos.ToList();
     }
+
+
 }

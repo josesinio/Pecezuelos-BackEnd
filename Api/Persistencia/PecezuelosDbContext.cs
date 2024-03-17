@@ -27,7 +27,7 @@ public class PecezuelosDbContext(DbContextOptions<PecezuelosDbContext> options) 
             new Cliente(1, "Josep", "Josep123@gmail.com", "12encotrasenia")
         );
         modelBuilder.Entity<Carrito>().HasData(
-            new Carrito(1, 1, 1000)
+            new Carrito(1, 1)
         );
         modelBuilder.Entity<Comentario>().HasData(
             new Comentario(1, 1, "una verga no estaba nada rica", Valoracion.Malo)

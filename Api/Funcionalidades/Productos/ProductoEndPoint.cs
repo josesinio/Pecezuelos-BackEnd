@@ -16,6 +16,16 @@ public  class ProductoEndPoint: ICarterModule
             productoServicio.CreateProducto(productoDto);
             return Results.Ok("Producto creado con exito");
         });
+        app.MapPut("/Api/Producto/{IDProducto}", ([FromServices] IProductoService productoServicio, ProductoDto productoDto, byte IDProducto)=>
+        {
+            productoServicio.UpdateProducto(productoDto, IDProducto);
+            return Results.Ok("Producto modificado con exito");
+        });
+        app.MapDelete("/Api/Producto/{IDProducto}", ([FromServices] IProductoService productoServicio, byte IDProducto)=>
+        {
+            productoServicio.DeleteProducto(IDProducto);
+            return Results.Ok("Producto eliminado con exito");
+        });
     }
 
 }

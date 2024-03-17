@@ -4,8 +4,12 @@ using Aplicacion.Dominio;
 namespace Api.Funcionalidades.Productos;
 public interface IProductoService
 {
-    void CreateProducto(ProductoDto productoDto);
+    void CreateProducto(ProductoDto productoDt);
+    void DeleteProducto(byte IDProducto);
+
     List<Producto> GetProductos();
+    void UpdateProducto(ProductoDto productoDto, byte IDProducto);
+
 }
 public class ProductoService : IProductoService
 {
@@ -22,9 +26,36 @@ public class ProductoService : IProductoService
         context.SaveChanges();
     }
 
+    public void DeleteProducto(byte IDProducto)
+    {
+        var producto = context.Productos.FirstOrDefault(x => x.ID == IDProducto);
+
+        if (producto != null)
+        {
+            context.Remove(producto);
+
+            context.SaveChanges();
+        }
+    }
+
+
     public List<Producto> GetProductos()
     {
         return context.Productos.ToList();
     }
 
+    public void UpdateProducto(ProductoDto productoDto, byte IDProducto)
+    {
+        var producto = context.Productos.FirstOrDefault(x => x.ID == IDProducto );
+        if(producto != null){
+
+            producto.Nombre = productoDto.Nombre;
+            producto.Precio = productoDto.Precio;
+            producto.Descripcion = productoDto.Descripcion;            
+            producto.Stock = productoDto.Stock;
+            producto.RutaImagen = productoDto.RutaImagen;
+
+            context.SaveChanges();
+        }
+    }
 }

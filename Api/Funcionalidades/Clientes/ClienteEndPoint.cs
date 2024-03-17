@@ -18,6 +18,15 @@ public  class ClienteEndPoint: ICarterModule
             return Results.Ok("Cleinte creado con exito");
         }
         );
+        app.MapPut("/Api/Cliente/{IDcliente}", ([FromServices] IClienteService clienteService, ClienteDto clienteDto, byte IDcliente)=>{
+            clienteService.UpdateCliente(IDcliente, clienteDto);
+            return Results.Ok("Cliente Modificado con éxito");
+        });
+        app.MapDelete("/Api/Cliente/{IDcliente}", ([FromServices] IClienteService clienteService, byte IDcliente)=>{
+            clienteService.DeleteCliente(IDcliente);
+            return Results.Ok("Cliente Eliminado con éxito");
+        });
+
     }
 
 }

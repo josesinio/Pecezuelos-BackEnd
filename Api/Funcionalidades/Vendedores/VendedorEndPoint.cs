@@ -18,5 +18,17 @@ public  class VendedorEndPoint: ICarterModule
             return Results.Ok("Vendedor creado con exito");
         }
         );
+        app.MapPut("/Api/Vendedor/{IDVendedor}", ([FromServices] IVendedorService vendedorService, VendedorDto vendedorDto, byte IDVendedor)=>
+        {
+            vendedorService.UpdateVendedor(IDVendedor, vendedorDto);
+            return Results.Ok("Vendedor modificado con exito");
+        }
+        );
+        app.MapPost("/Api/Vendedor/{IDVendedor}", ([FromServices] IVendedorService vendedorService, byte IDVendedor)=>
+        {
+            vendedorService.DeleteVendedor(IDVendedor);
+            return Results.Ok("Vendedor Eliminado con exito");
+        }
+        );
     }
 }
