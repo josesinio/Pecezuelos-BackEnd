@@ -21,7 +21,7 @@ public abstract class Usuario: EntidadConNombre
     {
         return BCrypt.Net.BCrypt.Verify(contrasenaTest, this._Contraseña);
     }
-    protected Usuario(byte ID, string Nombre,string Email, string Contraseña ) : base(ID, Nombre)
+    protected Usuario(Guid ID, string Nombre,string Email, string Contraseña ) : base(ID, Nombre)
     {
         this.Email= Email;
         this.Contraseña= Contraseña;

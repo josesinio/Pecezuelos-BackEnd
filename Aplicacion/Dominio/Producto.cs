@@ -8,7 +8,7 @@ public class Producto: EntidadConNombre
 {
     [ForeignKey("IdVendedor")]
     [Required]
-    public byte IDVendedor {get; set;}
+    public Guid IDVendedor {get; set;}
     [Required]
     public int Precio {get; set;}
 
@@ -23,7 +23,7 @@ public class Producto: EntidadConNombre
     public string Descripcion {get; set;}
     public List<Comentario> Comentarios {get; set;}
 
-    public Producto(byte ID,string Nombre, byte IDVendedor, int Precio, string RutaImagen, Categoria Categoria, int Stock, string Descripcion) : base(ID ,Nombre)
+    public Producto(Guid ID,string Nombre, Guid IDVendedor, int Precio, string RutaImagen, Categoria Categoria, int Stock, string Descripcion) : base(ID ,Nombre)
     {
         this.IDVendedor= IDVendedor;
         this.Precio= Precio;

@@ -7,16 +7,16 @@ public class Comentario
 {
     [Key]
     [Required]
-    public byte IdComentario {get; set;}
+    public Guid IdComentario {get; set;}
     [ForeignKey("IdCliente")]
     [Required]
-    public byte IDCliente {get; set;}
+    public Guid IDCliente {get; set;}
     [Required]
     [StringLength(50)]
     public string Mensaje {get; set;}
     public Valoracion Valoracion {get; set;}
 
-    public Comentario(byte IdComentario,byte IDCliente,string Mensaje, Valoracion Valoracion)
+    public Comentario(Guid IdComentario,Guid IDCliente,string Mensaje, Valoracion Valoracion)
     {
         this.IdComentario= IdComentario;
         this.IDCliente = IDCliente;

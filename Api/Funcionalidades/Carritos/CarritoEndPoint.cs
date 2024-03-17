@@ -16,7 +16,7 @@ public class CarritoEndPoint: ICarterModule
             carritoServicio.CreateCarrito(carritoDto);
             return Results.Ok("Carrito creado con exito");
         });
-        app.MapDelete("/Api/Carrito/{IDcarrito}", ([FromServices] ICarritoService carritoService, byte IDcarrito)=>{
+        app.MapDelete("/Api/Carrito/{IDcarrito}", ([FromServices] ICarritoService carritoService, Guid IDcarrito)=>{
             carritoService.DeleteCarrito(IDcarrito);
             return Results.Ok("Carrito Eliminada con éxito");
         });

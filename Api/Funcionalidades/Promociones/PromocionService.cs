@@ -5,9 +5,9 @@ namespace Api.Funcionalidades.Promociones;
 
 public interface IPromocionService{
     void CreatePromocion(PromocionDto promocionDto);
-    void DeletePromocion(byte IDPromocion);
+    void DeletePromocion(Guid IDPromocion);
     List<Promocion> GetPromociones();
-    void UpdatePromocion(byte IDPromocion, PromocionDto promocionDto);
+    void UpdatePromocion(Guid IDPromocion, PromocionDto promocionDto);
 
 }
 public class PromocionService: IPromocionService
@@ -21,11 +21,11 @@ public class PromocionService: IPromocionService
 
     public void CreatePromocion(PromocionDto promocionDto)
     {
-        context.Promociones.Add(new Promocion(promocionDto.ID, promocionDto.Nombre, promocionDto.Descripcion, promocionDto.Descuento, promocionDto.FechaInicio, promocionDto.FechaFin));
+        context.Promociones.Add(new Promocion(new Guid(), promocionDto.Nombre, promocionDto.Descripcion, promocionDto.Descuento, promocionDto.FechaInicio, promocionDto.FechaFin));
         context.SaveChanges();
     }
 
-    public void DeletePromocion(byte IDPromocion)
+    public void DeletePromocion(Guid IDPromocion)
     {
         var promocion = context.Promociones.FirstOrDefault(x => x.ID == IDPromocion);
 
@@ -42,7 +42,7 @@ public class PromocionService: IPromocionService
         return context.Promociones.ToList();
     }
 
-    public void UpdatePromocion(byte IDPromocion, PromocionDto promocionDto)
+    public void UpdatePromocion(Guid IDPromocion, PromocionDto promocionDto)
     {
         var promocion = context.Promociones.FirstOrDefault(x => x.ID == IDPromocion );
         if(promocion != null){

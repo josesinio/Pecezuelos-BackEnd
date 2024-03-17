@@ -15,22 +15,22 @@ public class PecezuelosDbContext(DbContextOptions<PecezuelosDbContext> options) 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Promocion>().HasData(
-            new Promocion(1, "Especial navidad", "un descuento de 10 pesos por navidad", 0-15,  DateTime.Today, DateTime.Now.AddDays(2))
+            new Promocion(Guid.NewGuid(), "Especial navidad", "un descuento de 10 pesos por navidad", 0-15,  DateTime.Today, DateTime.Now.AddDays(2))
         );
         modelBuilder.Entity<Vendedor>().HasData(
-            new Vendedor(1, "Josue", "Josue123@gmail.com", "12enPassword")
+            new Vendedor(Guid.NewGuid(), "Josue", "Josue123@gmail.com", "12enPassword")
         );
         modelBuilder.Entity<Producto>().HasData(
-            new Producto(1,"Alimento para peces", 1, 1000, "imagenes de alimento",Categoria.Comida, 32, "comida para peces dorados")
+            new Producto(Guid.NewGuid(),"Alimento para peces", new Guid("cc2d5ff9-a268-43d9-934c-67a6721269a9"), 1000, "imagenes de alimento",Categoria.Comida, 32, "comida para peces dorados")
         );
         modelBuilder.Entity<Cliente>().HasData(
-            new Cliente(1, "Josep", "Josep123@gmail.com", "12encotrasenia")
+            new Cliente(Guid.NewGuid(), "Josep", "Josep123@gmail.com", "12encotrasenia")
         );
         modelBuilder.Entity<Carrito>().HasData(
-            new Carrito(1, 1)
+            new Carrito(Guid.NewGuid(), new Guid("f7bfad7a-06d4-40c6-9636-877c28e9dd62"))
         );
         modelBuilder.Entity<Comentario>().HasData(
-            new Comentario(1, 1, "una verga no estaba nada rica", Valoracion.Malo)
+            new Comentario(Guid.NewGuid(),new Guid("f7bfad7a-06d4-40c6-9636-877c28e9dd62"), "una verga no estaba nada rica", Valoracion.Malo)
         );
     }
 }

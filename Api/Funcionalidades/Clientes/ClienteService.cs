@@ -6,8 +6,8 @@ namespace Api.Funcionalidades.Clientes;
 public interface IClienteService{
     List<Cliente> GetClientes();
     void CreateCliente(ClienteDto clienteDto);
-    void DeleteCliente(byte IDcliente);
-    void UpdateCliente(byte IDcliente, ClienteDto clienteDtoDto);
+    void DeleteCliente(Guid IDcliente);
+    void UpdateCliente(Guid IDcliente, ClienteDto clienteDtoDto);
 }
 public class ClienteService : IClienteService
 {
@@ -20,11 +20,11 @@ public class ClienteService : IClienteService
 
     public void CreateCliente(ClienteDto clienteDto)
     {
-        context.Clientes.Add(new Cliente(clienteDto.ID, clienteDto.Nombre, clienteDto.Email, clienteDto.Contraseña));
+        context.Clientes.Add(new Cliente(new Guid(), clienteDto.Nombre, clienteDto.Email, clienteDto.Contraseña));
         context.SaveChanges();
     }
 
-    public void DeleteCliente(byte IDcliente)
+    public void DeleteCliente(Guid IDcliente)
     {
         var cliente = context.Clientes.FirstOrDefault(x => x.ID == IDcliente);
 
@@ -41,7 +41,7 @@ public class ClienteService : IClienteService
         return context.Clientes.ToList();
     }
 
-    public void UpdateCliente(byte IDcliente, ClienteDto clienteDto)
+    public void UpdateCliente(Guid IDcliente, ClienteDto clienteDto)
     {
         var Cliente = context.Clientes.FirstOrDefault(x => x.ID == IDcliente );
         if(Cliente != null){

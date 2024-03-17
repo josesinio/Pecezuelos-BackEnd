@@ -6,7 +6,7 @@ namespace Aplicacion.Dominio;
 public class Cliente : Usuario
 {
     public virtual Carrito? Carrito{get; set;}
-    public Cliente( byte ID,string Nombre, string Email, string Contraseña) : base(ID, Nombre, Email, Contraseña)
+    public Cliente( Guid ID,string Nombre, string Email, string Contraseña) : base(ID, Nombre, Email, Contraseña)
     {
     }
 

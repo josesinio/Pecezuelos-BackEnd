@@ -7,8 +7,8 @@ namespace Api.Funcionalidades.Comentarios;
 public interface IComentarioService{
     List<Comentario> GetComentarios();
     void CreateComentario(ComentarioDto comentarioDto);
-    void DeleteComentario(byte IDcomentario);
-    void UpdateComentario(byte IDcomentario, ComentarioDto comentarioDto);
+    void DeleteComentario(Guid IDcomentario);
+    void UpdateComentario(Guid IDcomentario, ComentarioDto comentarioDto);
 }
 public class ComentarioService: IComentarioService
 {
@@ -20,10 +20,11 @@ public class ComentarioService: IComentarioService
 
     public void CreateComentario(ComentarioDto comentarioDto)
     {
-        context.Comentarios.Add(new Comentario(comentarioDto.IDComentario, comentarioDto.IDCliente, comentarioDto.Mensaje, comentarioDto.Valoracion));
+        context.Comentarios.Add(new Comentario(new Guid(), comentarioDto.IDCliente, comentarioDto.Mensaje, comentarioDto.Valoracion));
+        context.SaveChanges();
     }
 
-    public void DeleteComentario(byte IDcomentario)
+    public void DeleteComentario(Guid IDcomentario)
     {
         var comentario = context.Comentarios.FirstOrDefault(x => x.IdComentario == IDcomentario);
 
@@ -40,7 +41,7 @@ public class ComentarioService: IComentarioService
         return context.Comentarios.ToList();
     }
 
-    public void UpdateComentario(byte IDcomentario, ComentarioDto comentarioDto)
+    public void UpdateComentario(Guid IDcomentario, ComentarioDto comentarioDto)
     {
         var comentario = context.Comentarios.FirstOrDefault(x => x.IdComentario == IDcomentario );
         if(comentario != null){

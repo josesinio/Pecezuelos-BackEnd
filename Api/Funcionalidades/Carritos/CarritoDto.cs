@@ -2,6 +2,6 @@ namespace Api.Funcionalidades.Carritos;
 
 public class CarritoDto
 {
-    public required byte IDCarrito {get; set;}
-    public required byte IDCliente {get; set;}
+    public required Guid IDCarrito {get; set;}
+    public required Guid IDCliente {get; set;}
 }

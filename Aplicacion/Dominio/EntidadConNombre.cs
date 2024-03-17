@@ -6,13 +6,13 @@ public abstract class  EntidadConNombre
 {
     [Key]
     [Required]
-    public byte ID {get; set;}
+    public Guid ID {get; set;}
 
     [StringLength(50)]
     [Required]
     public string Nombre {get; set;}
 
-    public EntidadConNombre(byte ID,string Nombre){
+    public EntidadConNombre(Guid ID,string Nombre){
         this.ID = ID;
         this.Nombre = Nombre;
     }

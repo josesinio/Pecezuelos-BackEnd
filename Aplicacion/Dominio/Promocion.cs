@@ -18,7 +18,7 @@ public class Promocion: EntidadConNombre
     public DateTime FechaFin {get; set;}
 
 
-    public Promocion(byte ID, string Nombre, string Descripcion , decimal Descuento, DateTime FechaInicio, DateTime FechaFin) : base(ID, Nombre)
+    public Promocion(Guid ID, string Nombre, string Descripcion , decimal Descuento, DateTime FechaInicio, DateTime FechaFin) : base(ID, Nombre)
     {
         this.Descripcion =Descripcion;
         this.Descuento =Descuento;

@@ -5,9 +5,9 @@ namespace Api.Funcionalidades.Vendedores;
 
 public interface IVendedorService{
     void CreateVendedor(VendedorDto vendedorDto);
-    void DeleteVendedor(byte IDVendedor);
+    void DeleteVendedor(Guid IDVendedor);
     List<Vendedor> GetVendedores();
-    void UpdateVendedor(byte IDVendedor, VendedorDto vendedorDto);
+    void UpdateVendedor(Guid IDVendedor, VendedorDto vendedorDto);
 
 }
 public class VendedorService: IVendedorService
@@ -20,10 +20,11 @@ public class VendedorService: IVendedorService
 
     public void CreateVendedor(VendedorDto vendedorDto)
     {
-        context.Vendedores.Add(new Vendedor(vendedorDto.ID , vendedorDto.Nombre, vendedorDto.Email, vendedorDto.Contraseña));
+        context.Vendedores.Add(new Vendedor(new Guid(), vendedorDto.Nombre, vendedorDto.Email, vendedorDto.Contraseña));
+        context.SaveChanges();
     }
 
-    public void DeleteVendedor(byte IDVendedor)
+    public void DeleteVendedor(Guid IDVendedor)
     {
         var vendedor = context.Vendedores.FirstOrDefault(x => x.ID == IDVendedor);
         
@@ -39,7 +40,7 @@ public class VendedorService: IVendedorService
         return context.Vendedores.ToList();
     }
 
-    public void UpdateVendedor(byte IDVendedor, VendedorDto vendedorDto)
+    public void UpdateVendedor(Guid IDVendedor, VendedorDto vendedorDto)
     {
         var vendedor = context.Vendedores.FirstOrDefault(x => x.ID == IDVendedor);
         

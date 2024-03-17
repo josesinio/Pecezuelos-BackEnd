@@ -5,10 +5,10 @@ namespace Api.Funcionalidades.Productos;
 public interface IProductoService
 {
     void CreateProducto(ProductoDto productoDt);
-    void DeleteProducto(byte IDProducto);
+    void DeleteProducto(Guid IDProducto);
 
     List<Producto> GetProductos();
-    void UpdateProducto(ProductoDto productoDto, byte IDProducto);
+    void UpdateProducto(ProductoDto productoDto, Guid IDProducto);
 
 }
 public class ProductoService : IProductoService
@@ -22,11 +22,11 @@ public class ProductoService : IProductoService
 
     public void CreateProducto(ProductoDto productoDto)
     {
-        context.Productos.Add(new Producto(productoDto.ID, productoDto.Nombre, productoDto.IDVendedor, productoDto.Precio, productoDto.RutaImagen, productoDto.Categoria, productoDto.Stock, productoDto.Descripcion));
+        context.Productos.Add(new Producto(new Guid(), productoDto.Nombre, productoDto.IDVendedor, productoDto.Precio, productoDto.RutaImagen, productoDto.Categoria, productoDto.Stock, productoDto.Descripcion));
         context.SaveChanges();
     }
 
-    public void DeleteProducto(byte IDProducto)
+    public void DeleteProducto(Guid IDProducto)
     {
         var producto = context.Productos.FirstOrDefault(x => x.ID == IDProducto);
 
@@ -44,7 +44,7 @@ public class ProductoService : IProductoService
         return context.Productos.ToList();
     }
 
-    public void UpdateProducto(ProductoDto productoDto, byte IDProducto)
+    public void UpdateProducto(ProductoDto productoDto, Guid IDProducto)
     {
         var producto = context.Productos.FirstOrDefault(x => x.ID == IDProducto );
         if(producto != null){

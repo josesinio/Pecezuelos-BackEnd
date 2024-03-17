@@ -8,11 +8,11 @@ public class Carrito
 {
     [Key]
     [Required]
-    public byte IDCarrito { get; set; }
+    public Guid IDCarrito { get; set; }
 
     [ForeignKey("IdCliente")]
     [Required]
-    public byte IDCliente { get; set; }
+    public Guid IDCliente { get; set; }
 
     [Required]
     public int PrecioTotal { get; set; }
@@ -20,7 +20,7 @@ public class Carrito
     public List<Producto> Productos { get; set; }
 
 
-    public Carrito(byte IDCarrito,byte IDCliente)
+    public Carrito(Guid IDCarrito,Guid IDCliente)
     {
         this.IDCarrito =IDCarrito;
         this.IDCliente= IDCliente;
