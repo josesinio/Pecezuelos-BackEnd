@@ -9,7 +9,7 @@ public class Promocion: EntidadConNombre
     [StringLength(50)]
     public string Descripcion {get; set;}
     [Required]
-    public int Descuento {get; set;}
+    public decimal Descuento {get; set;}
 
     [Required]
     public DateTime FechaInicio {get; set;}
@@ -18,7 +18,7 @@ public class Promocion: EntidadConNombre
     public DateTime FechaFin {get; set;}
 
 
-    public Promocion(byte ID, string Nombre, string Descripcion , int Descuento, DateTime FechaInicio, DateTime FechaFin) : base(ID, Nombre)
+    public Promocion(byte ID, string Nombre, string Descripcion , decimal Descuento, DateTime FechaInicio, DateTime FechaFin) : base(ID, Nombre)
     {
         this.Descripcion =Descripcion;
         this.Descuento =Descuento;

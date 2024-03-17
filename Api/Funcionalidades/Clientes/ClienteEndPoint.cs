@@ -12,6 +12,12 @@ public  class ClienteEndPoint: ICarterModule
             return Results.Ok(clienteService.GetClientes());
         }
         );
+        app.MapPost("/Api/Cliente", ([FromServices] IClienteService clienteService, ClienteDto clienteDto)=>
+        {
+            clienteService.CreateCliente(clienteDto);
+            return Results.Ok("Cleinte creado con exito");
+        }
+        );
     }
 
 }

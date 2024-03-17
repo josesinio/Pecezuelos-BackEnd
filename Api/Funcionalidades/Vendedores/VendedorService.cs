@@ -4,6 +4,8 @@ using Aplicacion.Dominio;
 namespace Api.Funcionalidades.Vendedores;
 
 public interface IVendedorService{
+    void CreateVendedor(VendedorDto vendedorDto);
+
     List<Vendedor> GetVendedores();
 }
 public class VendedorService: IVendedorService
@@ -13,6 +15,12 @@ public class VendedorService: IVendedorService
     {
         this.context= context;
     }
+
+    public void CreateVendedor(VendedorDto vendedorDto)
+    {
+        context.Vendedores.Add(new Vendedor(vendedorDto.ID , vendedorDto.Nombre, vendedorDto.Email, vendedorDto.Contraseña));
+    }
+
 
     public List<Vendedor> GetVendedores()
     {

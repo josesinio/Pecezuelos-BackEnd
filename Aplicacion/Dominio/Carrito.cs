@@ -20,11 +20,11 @@ public class Carrito
     public List<Producto> Productos { get; set; }
 
 
-    public Carrito(byte IDCarrito,byte IDCliente, int PrecioTotal)
+    public Carrito(byte IDCarrito,byte IDCliente)
     {
         this.IDCarrito =IDCarrito;
         this.IDCliente= IDCliente;
-        this.PrecioTotal = PrecioTotal;
+        PrecioTotal = 0;
         Productos = new List<Producto>();
     }
 

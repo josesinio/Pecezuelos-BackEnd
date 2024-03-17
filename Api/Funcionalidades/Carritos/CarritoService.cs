@@ -1,13 +1,12 @@
-using System.Net.Http.Headers;
 using Api.Persistencia;
 using Aplicacion.Dominio;
-using Microsoft.VisualBasic;
 
 namespace Api.Funcionalidades.Carritos;
 
 
 public interface ICarritoService{
     List<Carrito> GetCarritos();
+    void CreateCarrito(CarritoDto carritoDto);
 }
 public class CarritoService : ICarritoService
 {
@@ -17,6 +16,14 @@ public class CarritoService : ICarritoService
     {
         this.context = context;
     }
+
+    public void CreateCarrito(CarritoDto carritoDto)
+    {
+        context.Carritos.Add(new Carrito(carritoDto.IDCarrito, carritoDto.IDCliente));
+        context.SaveChanges();
+    }
+
+
     public List<Carrito> GetCarritos()
     {
         return context.Carritos.ToList();

@@ -12,7 +12,7 @@ public class Producto: EntidadConNombre
     [Required]
     public int Precio {get; set;}
 
-    public string Imagen {get; set;}
+    public string RutaImagen {get; set;}
     [Required]
     public Categoria Categoria {get; set;}
     [Required]
@@ -23,17 +23,26 @@ public class Producto: EntidadConNombre
     public string Descripcion {get; set;}
     public List<Comentario> Comentarios {get; set;}
 
-    public Producto(byte ID,string Nombre, byte IDVendedor, int Precio, string Imagen, Categoria Categoria, int Stock, string Descripcion) : base(ID ,Nombre)
+    public Producto(byte ID,string Nombre, byte IDVendedor, int Precio, string RutaImagen, Categoria Categoria, int Stock, string Descripcion) : base(ID ,Nombre)
     {
         this.IDVendedor= IDVendedor;
         this.Precio= Precio;
-        this.Imagen = Imagen;
+        this.RutaImagen = RutaImagen;
         this.Categoria = Categoria;
         this.Stock = Stock;
         this.Descripcion= Descripcion;
         Comentarios= new List<Comentario>();
         Promociones= new List<Promocion>();
     }
+    //public void GuardarImagen(IFormFile imagen)
+//{
+    //var rutaImagen = Path.Combine("ruta/donde/guardar/imagenes", imagen.FileName);
+    //using (var stream = new FileStream(rutaImagen, FileMode.Create))
+    //{
+    //    imagen.CopyTo(stream);
+    //}
+    //this.RutaImagen = rutaImagen;
+//}
 
 
 }

@@ -6,6 +6,7 @@ namespace Api.Funcionalidades.Comentarios;
 
 public interface IComentarioService{
     List<Comentario> GetComentarios();
+    void CreateComentario(ComentarioDto comentarioDto);
 }
 public class ComentarioService: IComentarioService
 {
@@ -14,6 +15,12 @@ public class ComentarioService: IComentarioService
     {
         this.context = context;
     }
+
+    public void CreateComentario(ComentarioDto comentarioDto)
+    {
+        context.Comentarios.Add(new Comentario(comentarioDto.IDComentario, comentarioDto.IDCliente, comentarioDto.Mensaje, comentarioDto.Valoracion));
+    }
+
 
     public List<Comentario> GetComentarios()
     {

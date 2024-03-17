@@ -11,6 +11,11 @@ public class CarritoEndPoint: ICarterModule
         {
             return Results.Ok(carritoServicio.GetCarritos());
         });
+        app.MapPost("/Api/Carrito", ([FromServices] ICarritoService carritoServicio, CarritoDto carritoDto)=>
+        {
+            carritoServicio.CreateCarrito(carritoDto);
+            return Results.Ok("Carrito creado con exito");
+        });
     }
 
 }
