@@ -44,5 +44,8 @@ public class Producto: EntidadConNombre
     //this.RutaImagen = rutaImagen;
 //}
 
+    public void AgregarComentario (Comentario comentario) => Comentarios.Add(comentario);
+    public void EliminarComentario(Comentario comentario) => Comentarios.Remove(comentario);
+
 
 }

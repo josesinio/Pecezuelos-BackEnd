@@ -1,5 +1,6 @@
 using Aplicacion.Dominio;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 
 namespace Api.Persistencia;
 
@@ -24,6 +25,7 @@ public class PecezuelosDbContext(DbContextOptions<PecezuelosDbContext> options) 
             new Producto(Guid.NewGuid(),"Alimento para peces", new Guid("cc2d5ff9-a268-43d9-934c-67a6721269a9"), 1000, "imagenes de alimento",Categoria.Comida, 32, "comida para peces dorados")
         );
         modelBuilder.Entity<Cliente>().HasData(
+            
             new Cliente(Guid.NewGuid(), "Josep", "Josep123@gmail.com", "12encotrasenia")
         );
         modelBuilder.Entity<Carrito>().HasData(

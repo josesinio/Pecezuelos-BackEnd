@@ -16,6 +16,11 @@ public  class ProductoEndPoint: ICarterModule
             productoServicio.CreateProducto(productoDto);
             return Results.Ok("Producto creado con exito");
         });
+        app.MapPost("/Api/Producto/{IDproducto}/Comentario/{IDcomentario}", ([FromServices] IProductoService carritoServicio, Guid IDproducto, Guid IDcomentario)=>
+        {
+            carritoServicio.AddComentarioFromProducto(IDproducto,IDcomentario);
+            return Results.Ok("Se agrego un comentario al producto con exito");
+        });
         app.MapPut("/Api/Producto/{IDProducto}", ([FromServices] IProductoService productoServicio, ProductoDto productoDto, Guid IDProducto)=>
         {
             productoServicio.UpdateProducto(productoDto, IDProducto);
@@ -25,6 +30,11 @@ public  class ProductoEndPoint: ICarterModule
         {
             productoServicio.DeleteProducto(IDProducto);
             return Results.Ok("Producto eliminado con exito");
+        });
+        app.MapDelete("/Api/Producto/{IDproducto}/Comentario/{IDcomentario}", ([FromServices] IProductoService carritoServicio, Guid IDproducto, Guid IDcomentario)=>
+        {
+            carritoServicio.RemoveComentarioFromProducto(IDproducto,IDcomentario);
+            return Results.Ok("Se Eliminio un producto al carrito con exito");
         });
     }
 

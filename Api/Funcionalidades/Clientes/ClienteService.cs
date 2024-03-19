@@ -1,3 +1,4 @@
+using Api.Funcionalidades.Carritos;
 using Api.Persistencia;
 using Aplicacion.Dominio;
 
@@ -8,6 +9,9 @@ public interface IClienteService{
     void CreateCliente(ClienteDto clienteDto);
     void DeleteCliente(Guid IDcliente);
     void UpdateCliente(Guid IDcliente, ClienteDto clienteDtoDto);
+    void CreateCarrito(Carrito carritoCliente);
+    void DeleteCarrito(Guid dcliente);
+
 }
 public class ClienteService : IClienteService
 {
@@ -18,11 +22,30 @@ public class ClienteService : IClienteService
         this.context= context;
     }
 
-    public void CreateCliente(ClienteDto clienteDto)
+    public void CreateCarrito(Carrito carritoCliente)
     {
-        context.Clientes.Add(new Cliente(new Guid(), clienteDto.Nombre, clienteDto.Email, clienteDto.Contraseña));
+        context.Carritos.Add(carritoCliente);
         context.SaveChanges();
     }
+
+
+    public void CreateCliente(ClienteDto clienteDto)
+    {
+        
+        context.Clientes.Add(new Cliente(clienteDto.ID, clienteDto.Nombre, clienteDto.Email, clienteDto.Contraseña));
+    
+        context.SaveChanges();
+    }
+
+    public void DeleteCarrito(Guid dcliente)
+    {
+        var carrito = context.Carritos.FirstOrDefault(x=> x.IDCliente == dcliente);
+        if (carrito != null){
+            context.Carritos.Remove(carrito);
+            context.SaveChanges();
+        }
+    }
+
 
     public void DeleteCliente(Guid IDcliente)
     {

@@ -28,4 +28,8 @@ public class Carrito
         Productos = new List<Producto>();
     }
 
+    public void AgregarProducto(Producto producto) => Productos.Add(producto);
+
+    public void EliminarProducto(Producto producto) => Productos.Remove(producto);
+
 }

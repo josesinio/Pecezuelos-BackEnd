@@ -1,3 +1,5 @@
+using Api.Funcionalidades.Carritos;
+using Aplicacion.Dominio;
 using Carter;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +17,9 @@ public  class ClienteEndPoint: ICarterModule
         app.MapPost("/Api/Cliente", ([FromServices] IClienteService clienteService, ClienteDto clienteDto)=>
         {
             clienteService.CreateCliente(clienteDto);
-            return Results.Ok("Cleinte creado con exito");
+            var CarritoCliente= new Carrito( new Guid(),clienteDto.ID);
+            clienteService.CreateCarrito(CarritoCliente);
+            return Results.Ok("Cliente creado con exito");
         }
         );
         app.MapPut("/Api/Cliente/{IDcliente}", ([FromServices] IClienteService clienteService, ClienteDto clienteDto, Guid IDcliente)=>{
@@ -24,6 +28,7 @@ public  class ClienteEndPoint: ICarterModule
         });
         app.MapDelete("/Api/Cliente/{IDcliente}", ([FromServices] IClienteService clienteService, Guid IDcliente)=>{
             clienteService.DeleteCliente(IDcliente);
+            clienteService.DeleteCarrito(IDcliente);
             return Results.Ok("Cliente Eliminado con éxito");
         });
 

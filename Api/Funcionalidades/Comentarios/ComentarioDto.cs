@@ -9,3 +9,10 @@ public class ComentarioDto
     public required Valoracion Valoracion {get; set;}
 
 }
+public class ComentarioQueryDto
+{
+
+    public  string Mensaje {get; set;} = string.Empty;
+    public  Valoracion Valoracion{get; set;}
+
+}
